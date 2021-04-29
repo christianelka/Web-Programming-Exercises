@@ -28,7 +28,7 @@ if (isset($_POST['submit'])){
 			// mengeset cookie username dari namanya, lama cookie 3 bulan
 			setcookie("username", $_SESSION['namauser'], time()+3*30*24*3600,"/");
 			// redirect halaman ke page1.php
-			header("Location: tebak.php");
+			header("Location: index.php");
 		} else {
 			$gagal = "Username / Password Tidak Dikenali";
 		}
@@ -43,7 +43,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 	$a = $_POST['angka'];
 	$tebakan = $_POST['tebakan'];
 	if ($a == $tebakan){
-	$output = "Selamat ya… Anda benar, saya telah memilih bilangan $a <br><a href='tebak.php'>Ulangi Lagi</a>";
+	$output = "Selamat ya… Anda benar, saya telah memilih bilangan $a <br><a href='index.php'>Ulangi Lagi</a>";
 	} elseif ($a < $tebakan) {
 		$output = "Waaah… masih salah ya, bilangan tebakan Anda terlalu tinggi, pilihan kamu $tebakan";
 	} else {
@@ -58,9 +58,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 </head>
 <body>
 	<center>
-	<?php echo "<h2>Selamat datang ".$_SESSION['namauser'].", nama saya Mr. PHP. <br>Saya telah memilih secara random sebuah bilangan bulat. Silakan Anda menebak ya!</h2>";
+	<?php echo "<h2>Selamat datang ".$_COOKIE['username'].", nama saya Mr. PHP. <br>Saya telah memilih secara random sebuah bilangan bulat. Silakan Anda menebak ya!</h2>";
 	?>
-	<!-- <?php echo $a ?> -->
+	<!-- <?php echo $a ?>  -->
 	<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
 		<div>
 			<input type="hidden" name="angka" value="<?php echo $a ?>">
@@ -76,7 +76,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 	<h1>Welcome to my site</h1>
 	<p>Ini kunjungan Anda pertama kali di situs ini ya?</p>
 	<p>Login dulu ya!</p>
-	<form method="post" action="tebak.php">
+	<form method="post" action="index.php">
 		Username <input type="text" name="username"><br>
 		Password <input type="password" name="password"><br>
 		<input type="submit" name="submit" value="Login"><br>
