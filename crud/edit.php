@@ -39,7 +39,7 @@ if ($query){
           font-size: 3.5rem;
         }
         .container {
-          margin-top: 5%;
+          margin-top: 10%;
         } 
       }
       @media screen and (max-width: 1200px) {
